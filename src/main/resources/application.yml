@@ -1,0 +1,10 @@
+server:
+  port: 8080
+
+spring:
+  datasource:
+    #url: jdbc:mysql://172.16.43.117:3306/meeting_system?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://172.16.170.4:3306/meeting_system?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false&serverTimezone=UTC
+    username: root
+    password: jiang980212CHU
+    driverClassName: com.mysql.jdbc.Driver
