@@ -17,10 +17,6 @@ buildscript {
         mavenCentral()
 
     }
-    // 构建时所需要的插件或者是其他的依赖
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-    }
 
 }
 
@@ -40,12 +36,17 @@ repositories {
     maven {
         url REPOSITORY_URL
     }
+
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
     testCompile('org.springframework.boot:spring-boot-starter-test')
     compile("org.springframework.boot:spring-boot-starter")
+    compile fileTree(dir:'lib',includes:['aip-java-sdk-4.13.0.jar'])
+    compile fileTree(dir:'lib',includes:['json-20160810.jar'])
+    compile fileTree(dir:'lib',includes:['slf4j-api-1.7.25.jar'])
+//    compile fileTree(dir:'lib',includes:['slf4j-simple-1.7.25.jar'])
     compile 'org.springframework.boot:spring-boot-starter-web:2.0.4.RELEASE'
     testCompile('org.projectlombok:lombok')
     compile 'org.projectlombok:lombok:1.16.16'
