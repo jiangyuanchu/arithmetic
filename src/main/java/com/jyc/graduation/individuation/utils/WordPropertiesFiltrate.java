@@ -30,7 +30,7 @@ public class WordPropertiesFiltrate {
         if(wordAnalysis.getProperties() == null || wordAnalysis.getProperties().equals("")){
             for (String properties : wordProperties) {
                 wordAnalysis.setProperties(properties);
-                if(!wordAnalysis.getProperties().equals(null) || wordAnalysis.getProperties().equals("")){
+                if(wordAnalysis.getProperties() != null){
                     break;
                 }
             }

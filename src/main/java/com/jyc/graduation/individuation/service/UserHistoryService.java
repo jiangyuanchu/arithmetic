@@ -18,6 +18,9 @@ public class UserHistoryService {
     @Autowired
     UserHistoryMapper userHistoryMapper;
 
+    @Autowired
+    WordSearchRecordService wordSearchRecordService;
+
     public WordAnalysis searchHistory(UserHistory userHistory){
 
         WordAnalysis wordAnalysis = null;
@@ -44,6 +47,13 @@ public class UserHistoryService {
             userHistory.setFrequency(frequency + 1);
             userHistoryMapper.updateFrequencyForID(userHistory);
             log.info("用户多次查询更新成功");
+        }
+
+        try{
+            wordSearchRecordService.wordSearchRecord(userHistory);
+        }catch(Exception e){
+            e.printStackTrace();
+            log.info("查询词记录失败");
         }
 
         return wordAnalysis;
