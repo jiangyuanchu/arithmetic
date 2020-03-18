@@ -1,8 +1,8 @@
 package com.jyc.graduation.individuation.service;
 
 import com.jyc.graduation.individuation.domain.UserHistory;
-import com.jyc.graduation.individuation.enumeration.PropertiesEnum;
 import com.jyc.graduation.individuation.mapper.WordSearchRecordMapper;
+import com.jyc.graduation.individuation.utils.PropertiesIsOther;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,12 +31,7 @@ public class WordSearchRecordService {
         String properties = userHistory.getProperties();
 
         if(properties != null){
-            if(properties.equals(PropertiesEnum.w.toString()) || properties.equals(PropertiesEnum.d.toString())
-                    || properties.equals(PropertiesEnum.m.toString()) || properties.equals(PropertiesEnum.q.toString())
-                    || properties.equals(PropertiesEnum.r.toString()) || properties.equals(PropertiesEnum.p.toString())
-                    || properties.equals(PropertiesEnum.c.toString()) || properties.equals(PropertiesEnum.u.toString())
-                    || properties.equals(PropertiesEnum.xc.toString()) ){
-
+            if(PropertiesIsOther.isOther(properties)){
                 Integer frequency =  wordSearchRecordMapper.selectOther(userHistory);
                 if(frequency != null){
                     userHistory.setFrequency(frequency + 1);
@@ -47,7 +42,6 @@ public class WordSearchRecordService {
                     wordSearchRecordMapper.insertOther(userHistory);
                     log.info("其他词性新增记录完成");
                 }
-
             }else{
                 Integer frequency =  wordSearchRecordMapper.selectProperties(userHistory);
                 if(frequency != null){

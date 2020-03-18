@@ -17,7 +17,7 @@ public interface UserHistoryMapper {
     @Select("select frequency from user_history where user_id = #{userId} and word = #{word}")
     Integer selectFrequencyForID(UserHistory userHistory);
 
-    @Update("update user_history set frequency = #{frequency} where user_id = #{userId} and word = #{word}")
+    @Update("update user_history set frequency = #{frequency} , date = #{date} where user_id = #{userId} and word = #{word}")
     Integer updateFrequencyForID(UserHistory userHistory);
 
 }
