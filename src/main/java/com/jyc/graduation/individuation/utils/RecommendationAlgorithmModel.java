@@ -8,7 +8,7 @@ import java.util.List;
 public class RecommendationAlgorithmModel {
 
     //设置热度衰减周期
-    private static int TIME_OUT_DAY = 30;
+    private static int TIME_OUT_DAY = 7;
 
     public static Double getTimeWeightNumber(Double timeDifference){
 
