@@ -1,5 +1,6 @@
 package com.jyc.graduation.individuation.utils;
 
+import com.jyc.graduation.config.GlobalVariable;
 import com.jyc.graduation.individuation.domain.WordInfo;
 
 import java.util.Arrays;
@@ -7,8 +8,7 @@ import java.util.List;
 
 public class RecommendationAlgorithmModel {
 
-    //设置热度衰减周期
-    private static int TIME_OUT_DAY = 7;
+    private static int TIME_OUT_DAY = GlobalVariable.TIME_OUT_DAY;
 
     public static Double getTimeWeightNumber(Double timeDifference){
 
@@ -33,9 +33,9 @@ public class RecommendationAlgorithmModel {
 
         for (WordInfo word : wordInfos) {
             Double timeDifference = TimeDifference.getDayTimeDifferenceDistanceNow(word.getDate());
-            System.out.println("getWordAnalysisArraySort======== : " + timeDifference);
-            System.out.println("getWordAnalysisArraySort======== : " + word.getWord());
             word.setRecommendationRate(RecommendationAlgorithmModel.getTimeWeightNumber(timeDifference));
+            System.out.println("推荐权重 ==== " + RecommendationAlgorithmModel.getTimeWeightNumber(timeDifference));
+            System.out.println("推荐词 ======== : " + word.getWord());
         }
 
         Arrays.sort(wordInfos);

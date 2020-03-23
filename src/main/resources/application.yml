@@ -9,6 +9,9 @@ spring:
     password: root
     driverClassName: com.mysql.jdbc.Driver
 
-#mybatis:
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
 #  type-aliases-package: com.jyc.graduation.individuation.domain
 #  mapper-locations: classpath:individuation/mapper/*Mapper.xml
+

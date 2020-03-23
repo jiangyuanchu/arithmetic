@@ -23,6 +23,14 @@ public class WordInfo implements Comparable<WordInfo> {
 
     private Double recommendationRate;
 
+    private Integer todayFrequency;
+
+    private Timestamp today;
+
+    private String properties;
+
+    private String type;
+
     @Override
     public int compareTo(WordInfo o) {
         return (int)(this.recommendationRate - o.recommendationRate);
