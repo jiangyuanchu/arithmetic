@@ -28,8 +28,8 @@ public class TimeSpringbackMechanism {
             dateTime += springbackValue;
             Date date1 = new Date(dateTime);
             System.out.println("改变前日期 ===：" + date + " 改变后日期 ==== ：" + date1);
-            if(date1.after(dateUtils.getWeekAfter(date))){
-                date1 = dateUtils.getWeekAfter(date);
+            if(date1.after(dateUtils.getTimeOutDayAfter(date))){
+                date1 = dateUtils.getTimeOutDayAfter(date);
             }
             return date1;
         }

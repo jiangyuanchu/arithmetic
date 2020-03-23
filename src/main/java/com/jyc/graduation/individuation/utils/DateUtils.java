@@ -1,5 +1,6 @@
 package com.jyc.graduation.individuation.utils;
 
+import com.jyc.graduation.config.GlobalVariable;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
@@ -20,8 +21,8 @@ public class DateUtils {
         }
     }
 
-    public Date getWeekAfter(Date date){
-        long aWeek = (long)7*24*60*60*1000;
+    public Date getTimeOutDayAfter(Date date){
+        long aWeek = (long) GlobalVariable.TIME_OUT_DAY *24*60*60*1000;
         Date date1 = new Date(date.getTime() - aWeek);
         return date1;
     }
