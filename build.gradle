@@ -46,6 +46,7 @@ dependencies {
     compile fileTree(dir:'lib',includes:['aip-java-sdk-4.13.0.jar'])
     compile fileTree(dir:'lib',includes:['json-20160810.jar'])
     compile fileTree(dir:'lib',includes:['slf4j-api-1.7.25.jar'])
+    compile fileTree(dir:'lib',includes:['weka.jar'])
 //    compile fileTree(dir:'lib',includes:['slf4j-simple-1.7.25.jar'])
     compile 'org.springframework.boot:spring-boot-starter-web:2.0.4.RELEASE'
     testCompile('org.projectlombok:lombok')
@@ -53,6 +54,8 @@ dependencies {
     annotationProcessor('org.projectlombok:lombok')
     // https://mvnrepository.com/artifact/com.alibaba/fastjson
     compile group: 'com.alibaba', name: 'fastjson', version: '1.2.66'
+    // https://mvnrepository.com/artifact/nz.ac.waikato.cms.weka/weka-dev
+//    compile group: 'nz.ac.waikato.cms.weka', name: 'weka-dev', version: '3.9.1'
 
 
 
