@@ -62,4 +62,12 @@ dependencies {
     //mybatis
     compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '1.3.2'
     compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.47'
+    
+    //webmagic
+    compile 'us.codecraft:webmagic-core:0.7.3'
+    compile 'us.codecraft:webmagic-extension:0.7.3'
+    
+    compile 'com.github.pagehelper:pagehelper-spring-boot-starter:1.2.13' //pagehelper 分页插件
+
+
 }

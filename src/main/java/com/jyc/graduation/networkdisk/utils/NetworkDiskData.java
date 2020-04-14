@@ -1,6 +1,6 @@
 package com.jyc.graduation.networkdisk.utils;
 
-import com.alibaba.fastjson.JSON;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -11,9 +11,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class NetworkDiskData {
 
     public static final String DEF_CHATSET = "UTF-8";
@@ -118,27 +118,27 @@ public class NetworkDiskData {
     }
 
 
-    public static void main(String[] args) throws Exception{
-
-        String domain="http://api.xiaocongjisuan.com/";
-        String servlet="data/skydriverdata/get";
-        String method="get";
-
-        String requestUrl=domain+servlet;
-        Map<String,Object> params=new HashMap<String,Object>();
-        params.put("appKey",APP_KEY);
-        params.put("openId",OPEN_ID);
-
-        //变动部分
-        params.put("q","宇智波佐助");
-        params.put("currentPage",1);
-        params.put("pageSize",20);
-
-
-        String result=requestContent(requestUrl,params,method);
-
-        JsonDispose jsonDispose = new JsonDispose();
-        jsonDispose.jsonDispose(result);
-
-    }
+//    public static void main(String[] args) throws Exception{
+//
+//        String domain="http://api.xiaocongjisuan.com/";
+//        String servlet="data/skydriverdata/get";
+//        String method="get";
+//
+//        String requestUrl=domain+servlet;
+//        Map<String,Object> params=new HashMap<String,Object>();
+//        params.put("appKey",APP_KEY);
+//        params.put("openId",OPEN_ID);
+//
+//        //变动部分
+//        params.put("q","宇智波佐助");
+//        params.put("currentPage",1);
+//        params.put("pageSize",20);
+//
+//
+//        String result=requestContent(requestUrl,params,method);
+//
+//        JsonDispose jsonDispose = new JsonDispose();
+//        jsonDispose.jsonDispose(result);
+//
+//    }
 }
