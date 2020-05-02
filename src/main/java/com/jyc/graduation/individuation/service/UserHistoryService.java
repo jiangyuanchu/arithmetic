@@ -6,6 +6,7 @@ import com.jyc.graduation.individuation.mapper.UserHistoryMapper;
 import com.jyc.graduation.individuation.utils.WordProperties;
 import com.jyc.graduation.individuation.utils.WordPropertiesFiltrate;
 import lombok.extern.slf4j.Slf4j;
+import org.slf4j.impl.StaticLoggerBinder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
