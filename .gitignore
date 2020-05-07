@@ -6,9 +6,6 @@ build/
 .project
 .git/
 .svn*
-.settings/
 catalina*
 /logs/
 /.idea/
-./out/
-./config/
