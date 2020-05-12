@@ -7,6 +7,7 @@ import com.jyc.graduation.search.domain.SearchResult;
 import com.jyc.graduation.search.pageprocessor.BaiduPageProcessor;
 import com.jyc.graduation.search.pageprocessor.LuoMaPanPageProcessor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
@@ -19,6 +20,11 @@ import java.util.List;
 @RestController
 public class SearchController {
     @Autowired UserHistoryService userHistoryService;
+
+    @GetMapping("index")
+    public ModelAndView index(){
+        return new ModelAndView("index");
+    }
 
     @RequestMapping("/baiduSearch")
     public List<SearchResult> baiduSearch(String words, HttpServletRequest request){
