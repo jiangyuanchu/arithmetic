@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%//项目的发布路径，例如:  /rabc
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,24 +25,25 @@
 <div class="register">
     <div class="title">
         <h3>欢迎注册!</h3>
-        <p>已有账号？<a href="./login.jsp" target="_blank" class="go_login" style="color: #2e58ff;cursor: pointer;">去登陆</a></p>
+        <p>已有账号？<a href="./login" target="_blank" class="go_login" style="color: #2e58ff;cursor: pointer;">去登陆</a></p>
     </div>
     <div class="content">
-        <form id="myForm" action="" type="">
+        <form id="myForm" action="register" method="post">
             <p>
                 <label class="user_name" for="name">用户名</label>
-                <input id="name" type="text">
+                <input id="name" name="name" type="text">
             </p>
             <p>
                 <label class="user_account" for="account">账&nbsp;&nbsp;&nbsp;号</label>
-                <input id="account" type="text">
+                <input id="account" name="account" type="text">
             </p>
             <p>
                 <label class="user_password" for="password">密&nbsp;&nbsp;&nbsp;码</label>
-                <input id="password" type="text">
+                <input id="password" name="password" type="password">
             </p>
             <p>
                 <button class="regisyer_btn" type="button">注册</button>
+                <p style="margin-top: 20px; color: red;">${msg }</p>
             </p>
         </form>
     </div>

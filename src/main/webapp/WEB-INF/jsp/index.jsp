@@ -27,8 +27,8 @@
         <!-- Single button -->
     </div>
 </header>
-<form id="myForm" action="" type="">
-    <input type="text" class="input">
+<form id="myForm" action="baiduSearch" method="post">
+    <input name="words" type="text" class="input">
     <input type="submit" value="搜索" class="search">
 </form>
 <div class="recomend">

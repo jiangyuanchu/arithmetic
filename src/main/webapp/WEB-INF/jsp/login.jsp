@@ -1,8 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
+<%//项目的发布路径，例如:  /rabc
+    String path = request.getContextPath();
+    String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,23 +18,23 @@
 <script src="../../static/jquery-3.4.1.js"></script>
 <script src="../../static/bootstrap/js/bootstrap.min.js"></script>
 <div class="login">
-    <form action="" method="" id="myForm">
+    <form id="myForm" action="login" method="post" >
         <div class="title">
             <h2>欢迎登录！</h2>
         </div>
         <div class="acc">
-            <label for="account">账号：</label>
-            <input id="account" type="text">
+            <label for="account" value="${account }">账号：</label>
+            <input id="account" name="account" type="text">
         </div>
         <p class="unacc"></p>
         <div class="pass">
             <label for="password">密码：</label>
-            <input id="password" type="text">
+            <input id="password" name="password" type="password">
         </div>
         <p class="unpass"></p>
         <div class="login-btn">
             <button type="button" id="btn" class="btn btn-success">登录</button>
-            <p style="margin-top: 20px; color: red;"></p>
+            <p style="margin-top: 20px; color: red;">${msg }</p>
         </div>
     </form>
 </div>

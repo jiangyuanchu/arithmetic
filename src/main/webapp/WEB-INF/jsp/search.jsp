@@ -13,36 +13,27 @@
     <script src="../../static/jquery-3.4.1.js"></script>
     <script src="../../static/bootstrap/js/bootstrap.min.js"></script>
     <header>
-      <form action="" id="myform">
+      <form action="baiduSearch" method="post" id="myform">
         <span class="span">
-          <input type="text" class="input">
+          <input type="text" name="words" class="input">
         </span>
         <span>
-          <input type="button" class="btn" value="搜索一下">
+          <input type="submit" class="btn" value="搜索一下">
         </span>
       </form>
       <div class="u">
-        <a href="./index.jsp" class="goindex">首页</a>
+        <a href="./index" class="goindex">首页</a>
         <a href="" id="user" class="username">
           username
         </a>
-        <a href="./login.jsp" class="goindex">退出</a>
+        <a href="./login" class="goindex">退出</a>
       </div>
 
     </header>
     <ul class="search_content">
-      <li><a href="">女生总回复哈哈哈是什么意思？</a></li>
-      <li><a href="">女生总回复哈哈哈是什么意思？</a></li>
-      <li><a href="">女生总回复哈哈哈是什么意思？</a></li>
-      <li><a href="">女生总回复哈哈哈是什么意思？</a></li>
-      <li><a href="">女生总回复哈哈哈是什么意思？</a></li>
-      <li><a href="">女生总回复哈哈哈是什么意思？</a></li>
-      <li><a href="">女生总回复哈哈哈是什么意思？</a></li>
-      <li><a href="">女生总回复哈哈哈是什么意思？</a></li>
-      <li><a href="">女生总回复哈哈哈是什么意思？</a></li>
-      <li><a href="">女生总回复哈哈哈是什么意思？</a></li>
-      <li><a href="">女生总回复哈哈哈是什么意思？</a></li>
-      <li><a href="">女生总回复哈哈哈是什么意思？</a></li>
+        <c:forEach items="${resultList }" var="result" >
+        <li><a href="${result.url }">${result.description }</a></li>
+        </c:forEach>
     </ul>
     <script>
 

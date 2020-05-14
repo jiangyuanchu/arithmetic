@@ -6,6 +6,7 @@ import com.jyc.graduation.individuation.service.UserHistoryService;
 import com.jyc.graduation.search.domain.SearchResult;
 import com.jyc.graduation.search.pageprocessor.BaiduPageProcessor;
 import com.jyc.graduation.search.pageprocessor.LuoMaPanPageProcessor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,18 +18,21 @@ import us.codecraft.webmagic.Spider;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
+@Slf4j
 @RestController
 public class SearchController {
     @Autowired UserHistoryService userHistoryService;
 
-    @GetMapping("index")
+    @GetMapping("/index")
     public ModelAndView index(){
         return new ModelAndView("index");
     }
 
     @RequestMapping("/baiduSearch")
-    public List<SearchResult> baiduSearch(String words, HttpServletRequest request){
+    public ModelAndView baiduSearch(String words, HttpServletRequest request){
+        ModelAndView modelAndView = new ModelAndView();
         User user = (User) request.getSession().getAttribute("user");
+        log.info("获取用户{}",user);
         if (user != null){
             UserHistory userHistory = new UserHistory();
             userHistory.setUserId(user.getId());
@@ -44,15 +48,17 @@ public class SearchController {
 
             List<SearchResult> list = resultItems.get("result");
 
-            return list;
+            modelAndView.addObject("resultList",list);
+            modelAndView.setViewName("search");
+            return modelAndView;
         }finally {
             spider.close();
         }
 
     }
 
-    @RequestMapping("soupanSearch")
-    public List<SearchResult> soupanSearch(String words,String page, HttpServletRequest request){
+    @RequestMapping("/soupanSearch")
+    public ModelAndView soupanSearch(String words,String page, HttpServletRequest request){
         User user = (User) request.getSession().getAttribute("user");
         if (user != null){
             UserHistory userHistory = new UserHistory();
@@ -68,8 +74,10 @@ public class SearchController {
             ResultItems resultItems = spider.<ResultItems>get(String.format(urlTemplate,words,page));
 
             List<SearchResult> list = resultItems.get("result");
-
-            return list;
+            ModelAndView modelAndView = new ModelAndView();
+            modelAndView.addObject("resultList",list);
+            modelAndView.setViewName("search");
+            return modelAndView;
         }finally {
             spider.close();
         }
