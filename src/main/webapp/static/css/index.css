@@ -1,6 +1,8 @@
 *{
   margin: 0;
   padding: 0;
+  list-style: none;
+  text-decoration: none;
 }
 html{
   width: 100%;
@@ -27,7 +29,7 @@ html{
   vertical-align: top;
   cursor: pointer;
 }
-.shezhi{
+.shezhi, .tuichu{
   margin-left: 32px;
   margin-top: 19px;
   display: inline-block;
@@ -53,6 +55,17 @@ html{
   margin-left: 32px;
   font-size: 13px;
   color: white;
+}
+.user{
+  display: inline-block;
+  position: relative;
+  vertical-align: top;
+  margin-left: 32px;
+  margin-top: 20px;
+  display: none;
+}
+.tuichu{
+  display: none;
 }
 #myForm{
   width: 654px;
@@ -104,6 +117,51 @@ html{
 }
 .recomend{
     position: absolute;
-    top: 110px;
-    right: 239.4px;
+    top: 300px;
+    right: 520px;
+    width: 500px;
+    height: 300px;
+    /* display: none; */
+    
+}
+.person_recoment{
+  font-size: 20px;
+  height: 24px;
+  width: 100%;
+  margin-bottom: 10px;
+  color: #222;
+}
+.recomend > ul li{
+    height: 36px;
+    line-height: 36px;
+    width: 100%;
+}
+.recomend > ul li span{
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  background-size: 100% 100%;
+  text-align: center;
+  margin-right: 9px;
+  font-size: 12px;
+}
+.recomend > ul li a{
+  color: #626675;
+}
+.one{
+  background-image: url("../images/one.png");
+  color: #fff;
+}
+.two{
+  background-image: url("../images/two.png");
+  color: #fff;
+}
+.three{
+  background-image: url("../images/three.png");
+  color: #fff;
+}
+.others{
+  background-image: url("../images/others.png");
+  color: #9195a3;
 }

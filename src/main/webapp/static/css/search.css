@@ -1,0 +1,102 @@
+*{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+}
+html{
+  width: 100%;
+  height: 100%;
+}
+header{
+  width: 100%;
+  height: 55px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid #cccccc;
+  background-color: #fff;
+}
+#myform{
+  margin: 11px 0 0 150px;
+  float: left;
+  font-size: 0;
+}
+.span{
+  border: 1px solid #b6b6b6;
+  display: inline-block;
+  vertical-align: top;
+  width: 539px;
+  height: 34px;
+  margin-right: 0;
+  border-right-width: 0;
+  border-color: #b8b8b8 transparent #ccc #b8b8b8;
+  overflow: hidden;
+  font-size: 0;
+}
+.input{
+  width: 494px;
+  height: 24px;
+  font: 16px/18px arial;
+  line-height: 22px;
+  margin: 6px 0 0 7px;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  outline: 0;
+}
+.btn{
+  width: 100px;
+  height: 34px;
+  color: #fff;
+  letter-spacing: 1px;
+  background: #3385ff;
+  border-bottom: 1px solid #2d78f4;
+  outline: medium;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 0;
+}
+.search_content{
+  width: 539px;
+  padding-top: 80px;
+  margin-left: 150px;
+}
+.search_content  li{
+  width: 100%;
+  height: 50px;
+}
+.u{
+  z-index: 301;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 21px 9px 5px 0;
+  padding: 0;
+  color: #999;
+  white-space: nowrap;
+  width: 180px;
+  height: 16px;
+}
+.u > a{
+  text-decoration: underline;
+  color: #333;
+  margin: 0 7px;
+  cursor: pointer;
+}
+#user{
+  display: inline-block;
+}
+.u .username i{
+  background-position: -408px -144px;
+}
+.c-icon{
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  vertical-align: text-bottom;
+  font-style: normal;
+  overflow: hidden;
+  background: url('https://dss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/static/protocol/https/global/img/icons_441e82f.png') no-repeat 0 0;
+}

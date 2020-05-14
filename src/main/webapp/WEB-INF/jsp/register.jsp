@@ -30,7 +30,7 @@
                 <input id="name" type="text">
             </p>
             <p>
-                <label class="user_account" for="account">手机号</label>
+                <label class="user_account" for="account">账&nbsp;&nbsp;&nbsp;号</label>
                 <input id="account" type="text">
             </p>
             <p>
