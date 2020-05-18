@@ -2,6 +2,8 @@ package com.jyc.graduation.search.controller;
 
 import com.jyc.graduation.individuation.domain.User;
 import com.jyc.graduation.individuation.domain.UserHistory;
+import com.jyc.graduation.individuation.domain.WordInfo;
+import com.jyc.graduation.individuation.service.RecommendService;
 import com.jyc.graduation.individuation.service.UserHistoryService;
 import com.jyc.graduation.search.domain.SearchResult;
 import com.jyc.graduation.search.pageprocessor.BaiduPageProcessor;
@@ -22,10 +24,20 @@ import java.util.List;
 @RestController
 public class SearchController {
     @Autowired UserHistoryService userHistoryService;
+    @Autowired RecommendService recommendService;
 
     @GetMapping("/index")
-    public ModelAndView index(){
-        return new ModelAndView("index");
+    public ModelAndView index(HttpServletRequest request){
+        ModelAndView modelAndView = new ModelAndView();
+        User user = (User) request.getSession().getAttribute("user");
+        if (user!=null){
+            UserHistory userHistory = new UserHistory();
+            userHistory.setUserId(user.getId());
+            List<WordInfo> recommendList = recommendService.getRecommendList(userHistory);
+            modelAndView.addObject("recommendList",recommendList);
+        }
+        modelAndView.setViewName("index");
+        return modelAndView;
     }
 
     @RequestMapping("/baiduSearch")
@@ -49,6 +61,7 @@ public class SearchController {
             List<SearchResult> list = resultItems.get("result");
 
             modelAndView.addObject("resultList",list);
+            modelAndView.addObject("words",words);
             modelAndView.setViewName("search");
             return modelAndView;
         }finally {

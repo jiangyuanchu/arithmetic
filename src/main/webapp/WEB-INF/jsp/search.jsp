@@ -15,7 +15,7 @@
     <header>
       <form action="baiduSearch" method="post" id="myform">
         <span class="span">
-          <input type="text" name="words" class="input">
+          <input type="text" value="${words }" name="words" class="input">
         </span>
         <span>
           <input type="submit" class="btn" value="搜索一下">

@@ -14,16 +14,16 @@
 <script src="../../static/bootstrap/js/bootstrap.min.js"></script>
 <header class="head">
     <div class="ul">
-        <a href="https://voice.baidu.com/act/newpneumonia/newpneumonia/?from=osari_pc_1" class="a">抗击肺炎</a>
+<%--        <a href="https://voice.baidu.com/act/newpneumonia/newpneumonia/?from=osari_pc_1" class="a">抗击肺炎</a>--%>
         <a href="./register" target="_blank" class="shezhi">注册</a>
         <a href="./login" target="_blank" class="login">登录</a>
         <a href="" class="user">
             <span class="glyphicon glyphicon-user"></span>
             <span>
-              用户名
+              ${sessionScope.user.name }
             </span>
         </a>
-        <a href="./login.jsp" target="_blank" class="tuichu">退出登录</a>
+        <a href="exit" target="_blank" class="tuichu">退出登录</a>
         <!-- Single button -->
     </div>
 </header>
@@ -34,34 +34,32 @@
 <div class="recomend">
     <div class="person_recoment">个性化推荐</div>
     <ul>
+        <c:forEach items="${recommendList }" var="recommend">
         <li>
-            <span class="one">1</span>
-            <a href="">吉林省舒兰市全面进入战时状态吉林省舒兰市全面进入战时状态</a>
+            <span class="one"></span>
+            <a href="baiduSearch?words=${recommend.word}">${recommend.word }</a>
         </li>
-        <li>
-            <span class="two">2</span>
-            <a href="">加纳1人传染533名工厂同事加纳1人传染533名工厂同事</a>
-        </li>
-        <li>
-            <span class="three">3</span>
-            <a href="">赵丽颖冯绍峰牵手逛街赵丽颖冯绍峰牵手逛街</a>
-        </li>
-        <li>
-            <span class="others">4</span>
-            <a href="">吉林省舒兰市全面进入战时状态</a>
-        </li>
-        <li>
-            <span class="others">5</span>
-            <a href="">加纳1人传染533名工厂同事</a>
-        </li>
-        <li>
-            <span class="others">6</span>
-            <a href="">赵丽颖冯绍峰牵手逛街</a>
-        </li>
+        </c:forEach>
+
     </ul>
 </div>
 <script>
 
+    var user = "${sessionScope.user.name}";
+    console.log(user);
+    if(user){
+        $(".recomend").css("display", "block");
+        $(".user").css("display", "inline-block");
+        $(".tuichu").css("display", "inline-block");
+        $(".login").css("display", "none");
+        $(".shezhi").css("display", "none");
+    }else{
+        $(".recomend").css("display", "none");
+        $(".user").css("display", "none");
+        $(".tuichu").css("display", "none");
+        $(".login").css("display", "inline-block");
+        $(".shezhi").css("display", "inline-block");
+    }
 </script>
 </body>
 </html>

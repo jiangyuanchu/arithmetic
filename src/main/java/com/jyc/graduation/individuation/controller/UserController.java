@@ -1,14 +1,17 @@
 package com.jyc.graduation.individuation.controller;
 
 import com.jyc.graduation.individuation.domain.User;
+import com.jyc.graduation.individuation.domain.UserHistory;
+import com.jyc.graduation.individuation.domain.WordInfo;
+import com.jyc.graduation.individuation.service.RecommendService;
 import com.jyc.graduation.individuation.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -16,10 +19,26 @@ public class UserController {
 
     @Autowired
     UserService userService;
+    @Autowired RecommendService recommendService;
 
     @GetMapping("/login")
     public ModelAndView login(){
         return new ModelAndView("login");
+    }
+
+    /**
+     * 退出登录
+     */
+    @RequestMapping("/exit")
+    public ModelAndView exit(HttpServletRequest request){
+        ModelAndView modelAndView = new ModelAndView();
+        User user = (User) request.getSession().getAttribute("user");
+        if (user!=null){
+            request.getSession().removeAttribute("user");
+        }
+        modelAndView.setViewName("redirect:index");
+        return modelAndView;
+
     }
 
     @PostMapping("/login")
@@ -30,7 +49,11 @@ public class UserController {
         if (user1 != null){
             request.getSession().setAttribute("user", user1);
             log.info("登录成功");
-            modelAndView.setViewName("index");
+            UserHistory userHistory = new UserHistory();
+            userHistory.setUserId(user.getId());
+            List<WordInfo> recommendList = recommendService.getRecommendList(userHistory);
+            modelAndView.addObject("recommendList",recommendList);
+            modelAndView.setViewName("redirect:index");
             return modelAndView;
         }else{
             modelAndView.addObject("msg","账号或密码错误");
@@ -64,7 +87,7 @@ public class UserController {
         }
         userService.addUser(user);
         log.info("注册成功");
-        modelAndView.setViewName("login");
+        modelAndView.setViewName("redirect:login");
         return modelAndView;
     }
 }
