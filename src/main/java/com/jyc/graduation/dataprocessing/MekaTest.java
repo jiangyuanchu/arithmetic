@@ -11,7 +11,8 @@ import java.io.File;
 import java.util.Random;
 
 public class MekaTest {
-    public static void main(String[] args) throws Exception {
+    public String meka() throws Exception{
+        StringBuffer stringBuffer = new StringBuffer();
         Classifier m_classifier = new J48();
         MekaTest mekaTest = new MekaTest();
         Instances instances = mekaTest.getData(mekaTest.getQuery(),"SELECT user_id,word,properties FROM user_history");
@@ -42,35 +43,31 @@ public class MekaTest {
 //            System.out.println("真实值 == ：" + instances.instance(i).classValue());
 
         }
-        System.out.println("J48 classification precision:"+(right/sum) +"****"+ m_classifier);
-        System.out.println(m_classifier.classifyInstance(instances.instance(2)));
+        stringBuffer.append("J48 classification precision:"+(right/sum) +"****"+ m_classifier);
+        stringBuffer.append("<br>");
+        stringBuffer.append(m_classifier.classifyInstance(instances.instance(2)));
+        stringBuffer.append("<br>");
+        stringBuffer.append(instances.toString());
+        stringBuffer.append("<br>");
 
-        System.out.println(instances.toString());
         Random rand = new Random(1);
         StringBuffer forPredictionsPrinting = new StringBuffer();
         Boolean outputDistribution = new Boolean(true);
         weka.core.Range attsToOutput = null;
         int folds = 10;
         eval.crossValidateModel(m_classifier, instances2, folds, rand, forPredictionsPrinting ,attsToOutput, outputDistribution);
-        System.out.println(eval.toSummaryString("Evaluation results:\n",
-                false));
-        System.out.println("Correct % = " + eval.pctCorrect());
-        System.out.println("Incorrect % = " + eval.pctIncorrect());
-        System.out.println("AUC = " + eval.areaUnderROC(1));
-        System.out.println("kappa = " + eval.kappa());
-        System.out.println("MAE = " + eval.meanAbsoluteError());
-        System.out.println("RMSE = " + eval.rootMeanSquaredError());
-        System.out.println("RAE = " + eval.relativeAbsoluteError());
-        System.out.println("RRSE = " + eval.rootRelativeSquaredError());
-        System.out.println("Precision = " + eval.precision(1));
-        System.out.println("Recall = " + eval.recall(1));
-        System.out.println("fMeasure = " + eval.fMeasure(1));
-        System.out.println("Error Rate = " + eval.errorRate());
+        stringBuffer.append(eval.toSummaryString("Evaluation results:\n",false));
+        stringBuffer.append("<br>");
+        stringBuffer.append("Correct % = " + eval.pctCorrect() + "<br>" + "Incorrect % = " + eval.pctIncorrect() + "<br>" +
+                "kappa = " + eval.kappa() + "<br>" + "MAE = " + eval.meanAbsoluteError() + "<br>" + "RMSE = " + eval.rootMeanSquaredError() +
+                "<br>" + "Precision = " + eval.precision(1) + "<br>" + "Recall = " + eval.recall(1) + "<br>" +
+                "<br>" + "fMeasure = " + eval.fMeasure(1) + "<br>" + "Error Rate = " + eval.errorRate());
+        stringBuffer.append("<br>");
+        stringBuffer.append(eval.toMatrixString("=== Overall Confusion Matrix ===<br>"));
+        stringBuffer.append("<br>");
+        stringBuffer.append(forPredictionsPrinting);
 
-        System.out.println(eval
-                .toMatrixString("=== Overall Confusion Matrix ===\n"));
-
-        System.out.println(forPredictionsPrinting);
+        return stringBuffer.toString();
     }
 
     public InstanceQuery getQuery() {
@@ -107,4 +104,8 @@ public class MekaTest {
         return data;
     }
 
+    public static void main(String[] args) throws Exception {
+        MekaTest m = new MekaTest();
+        System.out.println(m.meka());
+    }
 }

@@ -55,9 +55,15 @@ public class RecommendService{
             wordAnalysis = WordAnalysis.builder().properties(key).build();
             List<WordInfo> wordInfoList = recommendMapper.selectRecommendListForProperties(wordAnalysis);
             WordInfo[] wordInfos = RecommendationAlgorithmModel.getWordAnalysisArraySort(wordInfoList);
-
+//            System.out.println("长度"+wordInfos.length);
+//            for(WordInfo wordInfo : wordInfos){
+//                System.out.println("输出：" + wordInfo);
+//            }
             //按比重装载数据
             for (int i=0 ;i<map.get(key) ;i++){
+                if(i >= wordInfos.length){
+                    break;
+                }
                 recommendList.add(wordInfos[i]);
             }
         }

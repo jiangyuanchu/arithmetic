@@ -35,4 +35,11 @@ public class WordInfo implements Comparable<WordInfo> {
     public int compareTo(WordInfo o) {
         return (int)(this.recommendationRate - o.recommendationRate);
     }
+
+    @Override
+    public String toString() {
+        return "WordInfo{" + "word='" + word + '\'' + ", date=" + date + ", frequency=" + frequency
+                + ", recommendationRate=" + recommendationRate + ", todayFrequency=" + todayFrequency + ", today="
+                + today + ", properties='" + properties + '\'' + ", type='" + type + '\'' + '}';
+    }
 }
